@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
   margin: 0;
   padding: 20px;
 }
@@ -9,32 +9,24 @@ body {
   margin: auto;
   background: #fff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 h1, h3 {
   text-align: center;
   color: #333;
 }
-#harga, #prediksi {
-  font-size: 1.2em;
-  margin: 10px 0;
-  text-align: center;
+#harga, #prediksi, #signals {
+  margin: 15px 0;
+  font-size: 1.1em;
 }
-#indikator {
-  margin-top: 20px;
-}
-#indikator ul {
+#signals ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
 }
-#indikator li {
-  padding: 4px 0;
-  font-weight: 600;
-  color: #222;
-}
-canvas {
-  display: block;
-  margin: auto;
+#signals li {
+  padding: 5px 0;
+  font-weight: bold;
 }
 .tv-container {
   margin-top: 20px;
@@ -42,13 +34,3 @@ canvas {
   border-radius: 8px;
   overflow: hidden;
 }
-#signals ul {
-  list-style: none;
-  padding: 0;
-}
-#signals li {
-  padding: 6px 0;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
