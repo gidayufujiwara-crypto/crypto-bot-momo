@@ -42,4 +42,13 @@ canvas {
   border-radius: 8px;
   overflow: hidden;
 }
+#signals ul {
+  list-style: none;
+  padding: 0;
+}
+#signals li {
+  padding: 6px 0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
 
