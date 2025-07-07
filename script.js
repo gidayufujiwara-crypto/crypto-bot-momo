@@ -53,7 +53,19 @@ async function update() {
     html += `<li>${label}: ${signals[coin]}</li>`;
   }
   html += '</ul>';
-  document.getElementById('signals').innerHTML = html;
+  const sinyal = await fetch('sinyal.json?' + new Date().getTime());
+const data = await sinyal.json();
+
+document.getElementById('signals').innerHTML = `
+  <h3>📡 Sinyal Beli/Jual (${data.tanggal})</h3>
+  <ul>
+    <li>BTC: ${data.BTC}</li>
+    <li>ETH: ${data.ETH}</li>
+    <li>SOL: ${data.SOL}</li>
+    <li>DOG: ${data.DOG}</li>
+  </ul>
+`;
+
 }
 
 update();
