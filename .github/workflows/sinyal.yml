@@ -1,0 +1,33 @@
+name: Update Sinyal Harian
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # jam 08:00 WIB
+  workflow_dispatch:
+
+jobs:
+  update-sinyal:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install technicalindicators axios
+
+      - name: Generate sinyal.json
+        run: node generate-sinyal.js
+
+      - name: Commit dan Push sinyal.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sinyal.json
+          git commit -m "Update sinyal harian"
+          git push
