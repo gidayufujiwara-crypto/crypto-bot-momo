@@ -2,28 +2,33 @@ name: Update Sinyal Harian
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 08:00 WIB
-  workflow_dispatch:
+    - cron: '0 1 * * *'  # Setiap hari jam 08:00 WIB (01:00 UTC)
+  workflow_dispatch:      # Bisa dijalankan manual juga
 
 jobs:
   update-sinyal:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-      - run: node generate-sinyal.js
+      - name: Jalankan generate-sinyal.js
+        run: node generate-sinyal.js
 
-      - run: |
+      - name: Commit & Push hasil
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add sinyal.json
-          git commit -m "Update sinyal harian"
+          git commit -m "Update sinyal harian" || echo "Ga ada yang berubah"
+          git pull --rebase
           git push
