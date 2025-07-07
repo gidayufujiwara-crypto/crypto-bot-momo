@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+.container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+h1 { text-align: center; }
+#harga, #prediksi { font-size: 1.2em; margin: 10px 0; }
