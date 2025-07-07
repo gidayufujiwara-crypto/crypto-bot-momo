@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <title>Crypto Bot Momo</title>
   <link href="style.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/technicalindicators@3.0.12/dist/browser.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Crypto Bot Momo</h1>
+    <h1>🤖 Crypto Bot Momo</h1>
+
     <div id="harga">💰 Memuat harga BTC...</div>
     <div id="prediksi">📊 Memuat prediksi...</div>
-    <div id="signals">📡 Menghitung sinyal teknikal...</div>
-    <canvas id="chart" width="400" height="200"></canvas>
-    <h3>📈 Grafik & Indikator BTC (via TradingView)</h3>
-<div class="tv-container">
-  <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_01&symbol=BINANCE:BTCUSDT&interval=D&hidesidetoolbar=1&symboledit=1&hideideas=1&theme=light&style=1&toolbarbg=F1F3F6"
-    width="100%" height="500" frameborder="0" allowtransparency="true" scrolling="no">
-  </iframe>
-</div>
+    <div id="signals">📡 Memuat sinyal teknikal...</div>
+
+    <h3>📈 Grafik BTC/IDR</h3>
+    <div class="tv-container">
+      <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tv1&symbol=INDODAX:BTCIDR&interval=D&hidesidetoolbar=1&hideideas=1&theme=light"
+        width="100%" height="500" frameborder="0" allowtransparency="true" scrolling="no">
+      </iframe>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
