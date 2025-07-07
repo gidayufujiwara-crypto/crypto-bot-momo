@@ -1,4 +1,38 @@
-body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
-.container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
-h1 { text-align: center; }
-#harga, #prediksi { font-size: 1.2em; margin: 10px 0; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+h1, h3 {
+  text-align: center;
+  color: #333;
+}
+#harga, #prediksi {
+  font-size: 1.2em;
+  margin: 10px 0;
+  text-align: center;
+}
+#indikator {
+  margin-top: 20px;
+}
+#indikator ul {
+  list-style: none;
+  padding: 0;
+}
+#indikator li {
+  padding: 4px 0;
+  font-weight: 600;
+  color: #222;
+}
+canvas {
+  display: block;
+  margin: auto;
+}
