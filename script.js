@@ -12,6 +12,41 @@ async function update() {
 
   // Ambil data historis 30 hari
   const histRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30');
+  // Fungsi untuk hitung sinyal
+function getSignal(prices, rsi, emaShort, emaLong) {
+  const len = prices.length;
+  if (emaShort[len-2] && emaLong[len-2]) {
+    const prevCross = emaShort[len-2] - emaLong[len-2];
+    const nowCross = emaShort.at(-1) - emaLong.at(-1);
+    const rsiNow = rsi.at(-1);
+    if (prevCross < 0 && nowCross > 0 && rsiNow > 50) return '🔔 BUY';
+    if (prevCross > 0 && nowCross < 0 && rsiNow < 50) return '⚠️ SELL';
+  }
+  return '—';
+}
+
+// Ambil data tiap coin
+const coins = ['bitcoin','ethereum','solana','dogecoin'];
+const signals = {};
+for (let coin of coins) {
+  const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=30`);
+  const hist = await res.json();
+  const p = hist.prices.map(x=>x[1]);
+  const RSI14 = RSI.calculate({ period: 14, values: p });
+  const EMA21 = EMA.calculate({ period: 21, values: p });
+  const EMA34 = EMA.calculate({ period: 34, values: p });
+  signals[coin] = getSignal(p, RSI14, EMA21, EMA34);
+}
+
+// Render sinyal
+let html = '<h3>Sinyal Beli/Jual</h3><ul>';
+for (let coin of coins) {
+  const sym = coin.toUpperCase().slice(0, coin==='bitcoin'?3:coin==='ethereum'?3:coin==='solana'?3:'DOG');
+  html += `<li>${sym}: ${signals[coin]}</li>`;
+}
+html += '</ul>';
+document.getElementById('signals').innerHTML = html;
+
   const histData = await histRes.json();
   const prices = histData.prices.map(p => p[1]);
   const times = histData.prices.map(p => new Date(p[0]).toLocaleDateString());
